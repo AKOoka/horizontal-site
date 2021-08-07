@@ -1,0 +1,163 @@
+@import '../../styles/variables.scss';
+
+@mixin tile($width, $width-screen-medium, $height-screen-small) {
+  height: 100%;
+
+  @if $width != 0 {
+    width: $width;
+  }
+
+  @media screen and (max-width: $max-width-screen-small) {
+    width: $width-screen-medium;
+  }
+
+  @media screen and (max-width: $max-width-screen-smallest) {
+    height: $height-screen-small;
+    width: 100%;
+  }
+}
+
+@mixin tile-child-wrapper ($justify-content: '', $flex-direction-screen-small: '', $justify-content-screen-small: '') {
+  align-items: center;
+  padding: 0 3.5rem;
+
+  @if $justify-content != '' {
+    justify-content: $justify-content;
+  }
+
+  @media screen and (max-width: $max-width-screen-small) {
+    padding: 0 1.5rem;
+
+    @if $flex-direction-screen-small != '' {
+      flex-direction: $flex-direction-screen-small;
+    }
+    @if $justify-content-screen-small != '' {
+      justify-content: $justify-content-screen-small;
+    }
+  }
+}
+
+.tile {
+  position: relative;
+
+  &__background, &__image, &__children-wrapper {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__background, &__image {
+    position: absolute;
+  }
+
+  &__children-wrapper {
+    box-sizing: border-box;
+    display: flex;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.tile-one .tile__image, .tile-three .tile__image, .tile-five .tile__image {
+  object-fit: cover;
+}
+
+.tile-one {
+  @include tile(17.5rem, 10rem, 18rem);
+
+  & .tile__image {
+    object-position: 25% 25%;
+  }
+}
+
+.tile-two {
+  @include tile(37.5rem, 20rem, 22rem);
+
+  & .tile__children-wrapper {
+    @include tile-child-wrapper()
+  }
+}
+
+.tile-three {
+  @include tile(50rem, 30rem, 22rem);
+
+  & .tile__background {
+    width: 70%;
+    right: 0;
+
+    @media screen and (max-width: $max-width-screen-small) {
+      width: 100%;
+    }
+  }
+
+  & .tile__children-wrapper {
+    @include tile-child-wrapper(flex-end)
+  }
+
+  & .text {
+    width: calc(70% - 3.5rem);
+
+    @media screen and (max-width: $max-width-screen-small) {
+      width: 100%;
+    }
+  }
+
+  & .tile__image {
+    object-position: top left;
+  }
+}
+
+.tile-four {
+  @include tile(0, 20rem, 25rem);
+
+  & .text {
+    width: 18.5rem;
+  }
+
+  & .tile__children-wrapper {
+    @include tile-child-wrapper('', column, center)
+  }
+}
+
+.tile-five {
+  @include tile(65rem, 30rem, 22rem);
+
+  & .tile__children-wrapper {
+    @include tile-child-wrapper()
+  }
+
+  & .text {
+    width: calc(50% - 3.5rem);
+
+    @media screen and (max-width: $max-width-screen-small) {
+      width: 100%;
+    }
+  }
+
+  & .tile__background {
+    width: 50%;
+
+    @media screen and (max-width: $max-width-screen-small) {
+      width: 100%;
+    }
+  }
+
+  & .tile__image {
+    object-position: top right;
+  }
+}
+
+.tile-six {
+  @include tile(22rem, 20rem, 18rem);
+
+  & .tile__children-wrapper {
+    @include tile-child-wrapper()
+  }
+}
+
+.tile-contact {
+  @include tile(22rem, 20rem, 18rem);
+
+  & .tile__children-wrapper {
+    @include tile-child-wrapper()
+  }
+}

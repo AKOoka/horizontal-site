@@ -1,0 +1,58 @@
+@import '../../../styles/variables';
+
+.field {
+  &_width_full {
+    width: 100%;
+    margin: 2rem 0;
+
+    @media screen and (max-width: $max-width-screen-smallest) {
+      margin: 0 0 1.5rem 0;
+    }
+  }
+
+  &_width_half {
+    width: 47%;
+
+    @media screen and (max-width: $max-width-screen-smallest) {
+      width: 100%;
+      margin: 0 0 1.5rem 0;
+    }
+  }
+
+  &__user-input {
+    box-sizing: border-box;
+    width: 100%;
+    border: solid 2px rgba(255, 255, 255, 0.25);
+    border-radius: 0.25rem;
+    font: inherit;
+    background: transparent;
+    outline: 0;
+    transition: border-color 0.2s ease-in-out;
+
+    &[type="text"]:focus, &[type="password"]:focus, &[type="email"]:focus, &[type="tel"]:focus, &:focus {
+      border-color: #ffe4b4;
+    }
+  }
+
+  &__input {
+    padding: 0 0.75rem;
+    height: 2.5rem;
+  }
+
+  &__text-area {
+    padding: 0.75rem 1rem;
+    resize: none;
+  }
+
+  &__label {
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.875);
+    margin-bottom: 0.45rem;
+    display: block;
+  }
+
+  &__label:hover {
+    cursor: text;
+  }
+}

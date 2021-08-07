@@ -1,0 +1,94 @@
+@import '../../styles/variables';
+
+.icon-group {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  @media screen and (min-width: $min-width-screen-small) {
+    width: 21.5rem;
+    padding-left: 3.5rem;
+  }
+
+  &__line {
+    display: inline-block;
+  }
+
+  &__icon-wrapper {
+    position: relative;
+    display: inline-block;
+
+    &_left-margin::before, &_top-margin::after {
+      content: '';
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.25);
+    }
+
+    &_left-margin {
+      margin-left: 1.5rem;
+
+      &::before {
+        width: 1.5rem;
+        height: 2px;
+        top: calc(50% - 1px);
+        left: -1.5rem;
+      }
+    }
+
+    &_top-margin {
+      margin-top: 1.5rem;
+
+      &::after {
+        width: 2px;
+        height: 1.5rem;
+        top: -1.5rem;
+        left: calc(50% - 1px);
+      }
+    }
+  }
+
+  &__icon::before {
+    width: 6rem;
+    line-height: 6rem;
+    font-size: 2.5rem;
+    display: block;
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.25);
+    font-family: 'Font Awesome 5 Free';
+    border-radius: 50%;
+    text-align: center;
+
+    @media screen and (max-width: 736px) {
+      width: 3rem;
+      line-height: 3rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  &__icon_bold::before {
+    font-weight: 900;
+  }
+}
+
+.icon-gem::before {
+  content: '\f3a5'
+}
+
+.icon-camera::before {
+  content: '\f083';
+}
+
+.icon-cog::before {
+  content: '\f013';
+}
+
+.icon-paper-plane::before {
+  content: '\f1d8';
+}
+
+.icon-chart-bar::before {
+  content: '\f080';
+}
+
+.icon-code::before {
+  content: '\f121';
+}
